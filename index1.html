@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dhantara Live | Gaming Creator</title>
+
+    <link href="E:\dhantar website\dhantara.jpg.jpg">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050816;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-shadow: 0 0 15px #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background:
+                linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .85)),
+                url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00d4ff;
+            box-shadow:
+                0 0 20px #00d4ff,
+                0 0 40px #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #00d4ff;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        .typing {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #00d4ff;
+            font-weight: 600;
+            height: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: #00d4ff;
+            color: black;
+        }
+
+        .btn-secondary {
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stat {
+            background: #0f172a;
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #00d4ff;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .about p {
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 20px;
+            transition: .3s;
+            border: 1px solid #1e293b;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social a {
+            padding: 15px 25px;
+            background: #0f172a;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+        }
+
+        .social a:hover {
+            background: #00d4ff;
+            color: black;
+        }
+
+        .contact {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #00d4ff;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: black;
+            color: #888;
+        }
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+        }
+
+        #commentList {
+            margin-top: 30px;
+        }
+
+        .comment-box {
+            background: #151515;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00e5ff;
+        }
+
+        .comment-box h4 {
+            color: #00e5ff;
+            margin-bottom: 8px;
+        }
+
+        .comment-box p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .comment-date {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="navbar">
+
+            <div class="logo">DHANTARA LIVE</div>
+
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#content">Content</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="hero">
+
+        <div>
+
+            <img src="dhantara.jpg.jpg" alt="Dhantara" class="profile-pic">
+
+            <h1>DHANTARA LIVE</h1>
+
+            <p>Gaming Creator • Reel Creator • Entertainer</p>
+
+            <div id="typing" class="typing"></div>
+
+            <div class="stats">
+                <div class="stat">568+ Followers</div>
+                <div class="stat">69+ Posts</div>
+                <div class="stat">100K+ Views</div>
+            </div>
+
+            <a href="https://www.instagram.com/dhantara_live" target="_blank" class="btn btn-primary">
+                Instagram
+            </a>
+
+            <a href="https://youtube.com/@dhantaralive" target="_blank" class="btn btn-secondary">
+                YouTube
+            </a>
+
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about">
+
+            <img src="dhantara1.jpg.png">
+            <img src="dhantara7.jpg.png">
+
+            <div>
+                <br><br>
+                <p>
+                    Hi, I'm Kushal Laha, also known as Dhantara. I create gaming content, relatable reels, POV videos,
+                    study vs gaming content and entertaining short-form videos. My goal is to build a strong gaming
+                    community and entertain people through creativity and gaming culture.
+                    <br>
+                    My goal is to entertain people through gaming culture and build a strong gaming community.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="content">
+
+        <h2 class="section-title">My Content</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎮 Gaming Reels</h3>
+                <p>FREE FIRE , MINECRAFT , GTA V and ALL OTHERS GAMES.</p>
+            </div>
+
+            <div class="card">
+                <h3>😂 Gamer Memes</h3>
+                <p>Funny gamer situations.</p>
+            </div>
+
+            <div class="card">
+                <h3>📚 Study vs Gaming</h3>
+                <p>Student gamer life content.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔥 POV Videos</h3>
+                <p>Creative storytelling reels.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="gallery">
+
+        <h2 class="section-title">Featured Reels</h2>
+
+        <div class="gallery">
+
+            <img src="dhantara3.jpg.png" alt="">
+            <img src="dhantara2.jpg.png" alt="">
+            <img src="dhantara9.jpg.png" alt="">
+            <img src="dhantara7.jpg.png" alt="">
+            <img src="dhantara6.jpg.png" alt="">
+            <img src="dhantara5.jpg.png" alt="">
+            <img src="dhantara0.jpg.png" alt="">
+            <img src="dhantara10.jpg.png" alt="">
+            <img src="dhantara8.jpg.png" alt="">
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2 class="section-title">Connect With Me</h2>
+
+        <div class="social">
+
+            <a href="https://www.instagram.com/dhantara_live" target="_blank">
+                Instagram
+            </a>
+
+            <a href="https://youtube.com/@dhantaralive" target="_blank">
+                YouTube
+            </a>
+
+            <a href="kushald@gmail.com">
+                Email
+            </a>
+
+        </div>
+
+    </section>
+
+    <section id="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <div class="contact">
+
+            <form id="contactForm">
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Your Email" required>
+
+                <textarea rows="5" placeholder="Your Message"></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+   
+    <script>
+
+/* ==========================
+   COMMENT SYSTEM
+========================== */
+
+const commentForm =
+document.getElementById("commentForm");
+
+const commentList =
+document.getElementById("commentList");
+
+let comments =
+JSON.parse(localStorage.getItem("comments")) || [];
+
+function displayComments(){
+
+commentList.innerHTML = "";
+
+comments.reverse().forEach(comment=>{
+
+const div =
+document.createElement("div");
+
+div.classList.add("comment-box");
+
+div.innerHTML = `
+<h4>${comment.name}</h4>
+<p>${comment.text}</p>
+<div class="comment-date">
+${comment.date}
+</div>
+`;
+
+commentList.appendChild(div);
+
+});
+
+comments.reverse();
+
+}
+
+displayComments();
+
+commentForm.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const username =
+document.getElementById("username").value;
+
+const commentText =
+document.getElementById("commentText").value;
+
+const newComment = {
+
+name: username,
+text: commentText,
+date: new Date().toLocaleString()
+
+};
+
+comments.push(newComment);
+
+localStorage.setItem(
+"comments",
+JSON.stringify(comments)
+);
+
+displayComments();
+
+commentForm.reset();
+
+});
+
+
+
+        const words = [
+            "Gaming Creator",
+            "BGMI Player",
+            "Instagram Reel Creator",
+            "Content Creator"
+        ];
+
+        let i = 0;
+        let j = 0;
+        let current = "";
+        let deleting = false;
+
+        function typeEffect() {
+
+            current = words[i];
+
+            document.getElementById("typing").textContent =
+                current.substring(0, j);
+
+            if (!deleting) {
+
+                j++;
+
+                if (j > current.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1000);
+                    return;
+                }
+
+            } else {
+
+                j--;
+
+                if (j === 0) {
+                    deleting = false;
+                    i = (i + 1) % words.length;
+                }
+
+            }
+
+            setTimeout(typeEffect, deleting ? 50 : 100);
+
+        }
+
+        typeEffect();
+
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                alert("Thank you for contacting Dhantara Live!");
+
+            });
+
+    </script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJssW_QKLu3UDcDDQJy_IEJ-VkVuhmYDY",
+            authDomain: "dhantara-live.firebaseapp.com",
+            projectId: "dhantara-live",
+            storageBucket: "dhantara-live.firebasestorage.app",
+            messagingSenderId: "1042686354992",
+            appId: "1:1042686354992:web:22f1fed17b0e2eaef1aff5",
+            measurementId: "G-5R51VB6FBX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+    <!-- COMMENTS SECTION -->
+
+    <section id="comments" class="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">Community Comments</h2>
+
+            <form id="commentForm">
+
+                <input type="text" id="username" placeholder="Your Name" required>
+
+                <textarea id="commentText" rows="5" placeholder="Write your comment..." required></textarea>
+
+                <button type="submit">
+                    Post Comment
+                </button>
+
+            </form>
+
+            <div id="commentList"></div>
+
+        </div>
+
+    </section>
+
+
+ <footer>
+        © 2026 DHANTARA LIVE | All Rights Reserved
+    </footer>
+
+</body>
+
+</html>
