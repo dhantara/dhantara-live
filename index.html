@@ -463,25 +463,34 @@
 
     </section>
 
-    <section id="contact">
+ <form action="https://api.web3forms.com/submit" method="POST">
 
-        <h2 class="section-title">Contact Me</h2>
+<input type="hidden"
+name="access_key"
+value="3f28e96c-c866-430b-a16b-4d476805eb82">
 
-        <div class="contact">
+<input
+type="text"
+name="name"
+placeholder="Your Name"
+required>
 
-            <form id="contactForm">
+<input
+type="email"
+name="email"
+placeholder="Your Email"
+required>
 
-                <input type="text" placeholder="Your Name" required>
+<textarea
+name="message"
+placeholder="Your Message"
+required></textarea>
 
-                <input type="email" placeholder="Your Email" required>
+<button type="submit">
+Send Message
+</button>
 
-                <textarea rows="5" placeholder="Your Message"></textarea>
-
-                <button type="submit">
-                    Send Message
-                </button>
-
-            </form>
+</form>
 
         </div>
 
