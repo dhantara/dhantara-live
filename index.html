@@ -486,72 +486,61 @@
    COMMENT SYSTEM
 ========================== */
 
-const commentForm =
-document.getElementById("commentForm");
+const commentForm = document.getElementById("commentForm");
+const commentList = document.getElementById("commentList");
 
-const commentList =
-document.getElementById("commentList");
+commentForm.addEventListener("submit", async (e) => {
 
-let comments =
-JSON.parse(localStorage.getItem("comments")) || [];
+    e.preventDefault();
 
-function displayComments(){
+    const username =
+        document.getElementById("username").value;
 
-commentList.innerHTML = "";
+    const commentText =
+        document.getElementById("commentText").value;
 
-comments.reverse().forEach(comment=>{
+    try {
 
-const div =
-document.createElement("div");
+        await addDoc(collection(db, "comments"), {
 
-div.classList.add("comment-box");
+            name: username,
+            text: commentText,
+            createdAt: new Date()
 
-div.innerHTML = `
-<h4>${comment.name}</h4>
-<p>${comment.text}</p>
-<div class="comment-date">
-${comment.date}
-</div>
-`;
+        });
 
-commentList.appendChild(div);
+        commentForm.reset();
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Comment post nahi hua");
+
+    }
 
 });
 
-comments.reverse();
 
-}
+        onSnapshot(collection(db, "comments"), (snapshot) => {
 
-displayComments();
+    commentList.innerHTML = "";
 
-commentForm.addEventListener("submit",function(e){
+    snapshot.forEach((doc) => {
 
-e.preventDefault();
+        const comment = doc.data();
 
-const username =
-document.getElementById("username").value;
+        const div = document.createElement("div");
 
-const commentText =
-document.getElementById("commentText").value;
+        div.classList.add("comment-box");
 
-const newComment = {
+        div.innerHTML = `
+            <h4>${comment.name}</h4>
+            <p>${comment.text}</p>
+        `;
 
-name: username,
-text: commentText,
-date: new Date().toLocaleString()
+        commentList.prepend(div);
 
-};
-
-comments.push(newComment);
-
-localStorage.setItem(
-"comments",
-JSON.stringify(comments)
-);
-
-displayComments();
-
-commentForm.reset();
+    });
 
 });
 
@@ -654,7 +643,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getFirestore,
   collection,
-  addDoc
+  addDoc,
+  onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -705,6 +695,8 @@ document
 });
 
 </script>
+
+    
 
 </body>
 
